@@ -31,6 +31,8 @@ class BinaryClassifier(nn.Module):
         self.input_features = nn.Linear(input_features, hidden_dim)
         self.hidden_dim = nn.Linear(hidden_dim, output_dim)
 
+        # establishing dropout units to improve feature creation
+        self.drop = nn.Dropout(0.2)
         # sigmoid layer
         self.sig = nn.Sigmoid()
 
@@ -44,9 +46,10 @@ class BinaryClassifier(nn.Module):
         """
         
         # define the feedforward behavior
-        x = F.relu(self.input_features) # activation on hidden layer
+        x = F.relu(self.input_features(x)) # activation on hidden layer
         x = self.drop(x)
         x = self.hidden_dim(x)
+        x = self.sig(x)
         
        
         
