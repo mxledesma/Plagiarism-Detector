@@ -115,6 +115,8 @@ if __name__ == '__main__':
     parser.add_argument('--seed', type=int, default=1, metavar='S',
                         help='random seed (default: 1)')
     
+
+    
     ## TODO: Add args for the three model parameters: input_features, hidden_dim, output_dim
     # Model Parameters
     
